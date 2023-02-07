@@ -1,6 +1,6 @@
-export default function Menu() {
+export default function Menu({menuIsVisible}:{menuIsVisible: boolean}) {
 	return (
-		<nav>
+		<nav className={` ${menuIsVisible? '' : ''}`}>
 
 		</nav>
 	);
