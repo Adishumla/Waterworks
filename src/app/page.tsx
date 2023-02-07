@@ -1,7 +1,8 @@
+import Barchart from '@/components/Barchart';
 export default function Home() {
-  return (
-    <main>
-
-    </main>
-  )
+	return (
+		<main>
+			<Barchart />
+		</main>
+	);
 }
