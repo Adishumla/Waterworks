@@ -1,6 +1,7 @@
 import Hero from '@/components/Home/Hero';
 import Link from "next/link";
 
+
 export default function Home() {
 	return (
 		<>
@@ -20,5 +21,5 @@ export default function Home() {
 				</section>
 			</main>
 		</>
-	)
+	);
 }
