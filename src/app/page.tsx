@@ -1,11 +1,13 @@
 import Hero from '@/components/Home/Hero';
-import Data from '@/components/data';
+import ChartData from '@/components/ChartData';
+import ChartDisplay from '@/components/ChartDisplay';
 
 export default function Home() {
 	return (
 		<>
+			<ChartDisplay/>
 			<Hero />
-			<Data />
+			<ChartData />
 			<main className='bg-gradient-to-b from-white to-atlantic min-h-screen'></main>
 		</>
 	);
