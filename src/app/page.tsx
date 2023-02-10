@@ -6,5 +6,5 @@ export default function Home() {
 			<Hero />
 			<main className='bg-gradient-to-b from-white to-atlantic min-h-screen'></main>
 		</>
-	);
+	)
 }
