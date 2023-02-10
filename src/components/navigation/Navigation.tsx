@@ -9,6 +9,7 @@ export default function Navigation() {
 
 	const toggleMenu = () => {
 		setMenuIsVisible(!menuIsVisible);
+		menuIsVisible ? document.body.classList.remove('overflow-hidden') : document.body.classList.add('overflow-hidden');
 	};
 
 	return (
