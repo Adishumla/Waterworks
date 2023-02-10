@@ -13,7 +13,7 @@ export default function Navigation() {
 
 	return (
 		<>
-			<Menu menuIsVisible={menuIsVisible} />
+			<Menu menuIsVisible={menuIsVisible} onClick={toggleMenu} />
 			<MenuButton menuIsVisible={menuIsVisible} onClick={toggleMenu} />
 		</>
 	);
