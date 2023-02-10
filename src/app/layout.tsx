@@ -14,7 +14,7 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className="bg-clear text-mediterranean">
+      <body className="bg-clear text-mediterranean overflow-x-hidden">
 				<Navigation />
         {children}
         <Footer />
