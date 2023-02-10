@@ -2,11 +2,25 @@
 import Utils from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
-import Data from '@/components/ChartData';
+import ChartData from '@/components/ChartData';
 
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
+
+
+async function displayData() {
+	const url = 'http://data.goteborg.se/RiverService/v1.1/MeasureSites/4a9a0d23-8e98-4e64-81ac-3e01fed82bee?format=Json';
+	const response = await Promise.resolve(fetch(url));
+	const chartData = await response.json();
+	return (
+		chartData
+	);
+}
+
+const importData = displayData();
+
+console.log(importData);
 
 //create a new chart with Bar from react-chartjs-2
 const data = {
