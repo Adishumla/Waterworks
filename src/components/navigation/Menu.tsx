@@ -21,7 +21,7 @@ export default function Menu({ menuIsVisible, onClick }: { menuIsVisible: boolea
 					</Link>
 				</li>
 				<li className='text-4xl pt-12 text-salt'>
-					<Link onClick={onClick} href='/how-it-works'>
+					<Link onClick={onClick} href='/info'>
 						HOW IT WORKS
 					</Link>
 				</li>
