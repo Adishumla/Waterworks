@@ -6,7 +6,6 @@ export default async function displayData() {
 	const chartData = await response.json();
 	return (
 		<>
-			<h1>Display Data</h1>
 			{chartData.map((item: any) => (
 				<div key={item.id}>
 					<h2>{item.Code}</h2>
