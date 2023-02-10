@@ -16,7 +16,7 @@ export default function Home() {
 					<h2 className='text-4xl font-bold text-abyss -mt-1'>How it works</h2>
 					<div className='w-full h-56 bg-salt rounded-3xl drop-shadow-lg'></div>
 					<p className='text-abyss'>Lorem ipsum dolor sit amet consectetur. Aenean velit accumsan pharetra nunc elit quis eu duis vulputate. Odio vel massa risus sed</p>
-					<Link className='bg-baltic text-salt font-bold px-8 py-3 w-fit rounded-3xl self-center' href="#">View more</Link>
+					<Link className='bg-baltic text-salt font-bold px-8 py-3 w-fit rounded-3xl self-center md:self-start' href="#">View more</Link>
 					<div className='w-full h-56 bg-salt rounded-3xl drop-shadow-lg'></div>
 				</section>
 			</main>
