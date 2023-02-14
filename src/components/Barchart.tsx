@@ -19,7 +19,7 @@ Chart.register(...registerables);
 const datas = ChartData();
 
 const data = {
-	labels: [datas[0], datas[1], datas[2], datas[3], datas[4], datas[5]],
+	labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
 	datasets: [
 		{
 			label: '# of Votes',
