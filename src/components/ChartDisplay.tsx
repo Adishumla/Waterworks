@@ -8,18 +8,18 @@ import ChartData from '@/components/ChartData';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
-async function displayData() {
-	const url =
-		'https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/Agnesberg/Level/2023-01-01/2023-01-31?format=Json';
+async function displayData(location: string, fromDate: string, toDate: string) {
+	const url = `https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/${location}/Level/${fromDate}/${toDate}?format=Json`;
+	// console.log(url);
 	const response = await fetch(url);
 	const chartData = await response.json();
 	const value = [];
-	console.log(chartData[0]);
+	// console.log(chartData[0]);
 
 	for (const data of chartData) {
 		value.push(data.Value);
 	}
-	console.log(value);
+	// console.log(value);
 
 	const codes = [];
 	for (const data of chartData) {
@@ -27,18 +27,18 @@ async function displayData() {
 	}
 	return { value, codes };
 }
-export default function ChartDisplay() {
+export default function ChartDisplay({ chartState, setChartState }: { chartState: any; setChartState: any }) {
 	const [importData, setImportData] = useState<string[]>([]);
 	const [importLat, setImportLat] = useState<string[]>([]);
-
+	console.log('testar' + chartState.location);
 	useEffect(() => {
 		async function fetchData() {
-			const codes = await displayData();
+			const codes = await displayData(chartState.location, chartState.fromDate, chartState.toDate);
 			setImportData(codes.codes);
 			setImportLat(codes.value);
 		}
 		fetchData();
-	}, []);
+	}, [chartState]);
 	let city = [];
 	for (let i = 0; i < importData.length; i++) {
 		city.push('');
