@@ -8,10 +8,9 @@ import ChartData from '@/components/ChartData';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
-async function displayData(apiKey:string) {
-	console.log(apiKey);
+async function displayData() {
 	const url =
-		`https://data.goteborg.se/RiverService/v1.1/Measurements/${apiKey}/Agnesberg/Level/2022-01-01/2022-06-25?format=Json`;
+		'https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/Agnesberg/Level/2022-01-01/2022-06-25?format=Json';
 	const response = await fetch(url);
 	const chartData = await response.json();
 	const value = [];
@@ -29,21 +28,26 @@ async function displayData(apiKey:string) {
 	return { value, codes };
 }
 
-export default function ChartDisplay({apiKey}:{apiKey:string|any}) {
+export default function ChartDisplay() {
 	const [importData, setImportData] = useState<string[]>([]);
 	const [importLat, setImportLat] = useState<string[]>([]);
 
 	useEffect(() => {
 		async function fetchData() {
-			const codes = await displayData(apiKey);
+			const codes = await displayData();
 			setImportData(codes.codes);
 			setImportLat(codes.value);
 		}
 		fetchData();
 	}, []);
+	let city = [];
+	for (let i = 0; i < importData.length; i++) {
+		city.push('');
+	}
+
 	//console.log(importData);
 	const data = {
-		labels: ['Agnessbers', 'Bergsjön', 'Björkängen', 'Björkängen', 'Björkängen', 'Björkängen'],
+		labels: city,
 		datasets: [
 			{
 				label: '# of Votes',
@@ -80,7 +84,7 @@ export default function ChartDisplay({apiKey}:{apiKey:string|any}) {
 	return (
 		<div>
 			<p>bar-chart</p>
-			<Bar data={data} options={options} />
+			<Line data={data} options={options} />
 		</div>
 	);
 }
