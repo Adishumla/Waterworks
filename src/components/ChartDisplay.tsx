@@ -8,49 +8,52 @@ import ChartData from '@/components/ChartData';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
-async function displayData() {
-	const url =
-		'https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/Agnesberg/Level/2022-01-01/2022-06-25?format=Json';
+async function displayData(location: string, fromDate: string, toDate: string) {
+	const url = `https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/${location}/Level/${fromDate}/${toDate}?format=Json`;
+	// console.log(url);
 	const response = await fetch(url);
 	const chartData = await response.json();
 	const value = [];
-	console.log(chartData[0]);
+	// console.log(chartData[0]);
 
 	for (const data of chartData) {
 		value.push(data.Value);
 	}
-	console.log(value);
+	// console.log(value);
 
 	const codes = [];
 	for (const data of chartData) {
-		codes.push(data.Code);
+		codes.push(data.TimeStamp);
 	}
 	return { value, codes };
 }
-
-export default function ChartDisplay() {
+export default function ChartDisplay({ chartState, setChartState }: { chartState: any; setChartState: any }) {
 	const [importData, setImportData] = useState<string[]>([]);
 	const [importLat, setImportLat] = useState<string[]>([]);
-
+	console.log('testar' + chartState.location);
 	useEffect(() => {
 		async function fetchData() {
-			const codes = await displayData();
+			const codes = await displayData(chartState.location, chartState.fromDate, chartState.toDate);
 			setImportData(codes.codes);
 			setImportLat(codes.value);
 		}
 		fetchData();
-	}, []);
+	}, [chartState]);
 	let city = [];
 	for (let i = 0; i < importData.length; i++) {
 		city.push('');
 	}
 
-	//console.log(importData);
+	const time = importData.map((item) => {
+		const date = new Date(parseInt(item.slice(6, -2)));
+		return date.toLocaleDateString();
+	});
+
 	const data = {
-		labels: city,
+		labels: time,
 		datasets: [
 			{
-				label: '# of Votes',
+				label: 'Levels',
 				data: importLat,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
@@ -68,11 +71,13 @@ export default function ChartDisplay() {
 					'rgba(153, 102, 255, 1)',
 					'rgba(255, 159, 64, 1)'
 				],
-				borderWidth: 1
+				borderWidth: 1,
+
+				borderRadius: 5
 			}
 		]
 	};
-
+	//dont show labels on y-axis
 	const options = {
 		scales: {
 			y: {
@@ -84,7 +89,7 @@ export default function ChartDisplay() {
 	return (
 		<div>
 			<p>bar-chart</p>
-			<Line data={data} options={options} />
+			<Bar data={data} options={options} />
 		</div>
 	);
 }
