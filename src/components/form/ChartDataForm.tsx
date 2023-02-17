@@ -47,13 +47,23 @@ export default function ChartDataForm({
 	};
 
 	return (
-		<form onSubmit={submit}>
-			<select name='' id='' onChange={changeLocation}>
-				{options}
-			</select>
-			<input type='date' name='from' id='' value={fromDate} onChange={changeFromDate} />
-			<input type='date' name='to' id='' value={toDate} onChange={changeToDate} />
-			<input type='submit' value='filter' />
+		<form onSubmit={submit} className="w-full h-fit flex flex-col p-4 gap-4">
+			<div className='w-full h-fit flex flex-col gap-4'>
+				<label htmlFor="location" className=''>Location</label>
+				<select name='' id='location' onChange={changeLocation} className='rounded-lg border-abyss border-2 px-8 h-10'>
+					{options}
+				</select>
+			</div>
+			<div className='w-full h-fit flex flex-col gap-2'>
+				<p className=''>Dates</p>
+				<div className='w-full flex flex-row justify-between gap-4'>
+					<input type='date' name='from' id='' value={fromDate} onChange={changeFromDate} className="h-10 w-full rounded-lg border-abyss border-2 text-center" />
+					<input type='date' name='to' id='' value={toDate} onChange={changeToDate} className="h-10 w-full rounded-lg border-abyss border-2 text-center" />
+				</div>
+			</div>
+			<div className='w-full grid grid-cols-2 justify-items-end gap-4'>
+				<input type='submit' value='filter' className='col-start-2 h-10 w-4/5  rounded-lg bg-baltic hover:cursor-pointer'/>
+			</div>
 		</form>
 	);
 }
