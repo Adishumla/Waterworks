@@ -39,7 +39,6 @@ export default function ChartDisplay({
 	setChartLoaderState: any;
 	chartType?: string;
 }) {
-
 	const [importData, setImportData] = useState<string[]>([]);
 	let [importLat, setImportLat] = useState<string[]>([]);
 	useEffect(() => {
@@ -57,7 +56,6 @@ export default function ChartDisplay({
 		city.push('');
 	}
 
-
 	let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
 		if (importData.length > 60) {
@@ -72,7 +70,7 @@ export default function ChartDisplay({
 		let months = [];
 		for (let i = 0; i < importLat.length; i += 31) {
 			let temp = importLat.slice(i, i + 30);
-			temp.sort((a, b) => a - b);
+			temp.sort((a: any, b: any) => a - b);
 			median.push(temp[Math.floor(temp.length / 2)]);
 			months.push(time[i]);
 		}
@@ -87,7 +85,7 @@ export default function ChartDisplay({
 		let months = [];
 		for (let i = 0; i < importLat.length; i += 3) {
 			let temp = importLat.slice(i, i + 2);
-			temp.sort((a, b) => a - b);
+			temp.sort((a: any, b: any) => a - b);
 			median.push(temp[Math.floor(temp.length / 2)]);
 			months.push(time[i]);
 		}
@@ -96,7 +94,6 @@ export default function ChartDisplay({
 		time = months;
 		city = city.filter((item, index) => index % 3 === 0);
 	}
-
 
 	const data = {
 		labels: time,
@@ -137,7 +134,6 @@ export default function ChartDisplay({
 
 	return (
 		<div>
-
 			<Bar data={data} options={options} />
 		</div>
 	);
