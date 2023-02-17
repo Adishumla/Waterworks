@@ -18,12 +18,17 @@ export default function ChartWrapper({ locations }: { locations: any }) {
 			<section className=' bg-salt w-full h-auto rounded-2xl p-4'>
 				<ChartDisplay chartState={chartState} setChartState={setChartState} setChartLoaderState={setChartLoaderState} />
 			</section>
-			<div className='pl-6'>
+			<div className='pl-6 py-6'>
 				<h3 className='font-bold text-abyss'>Graphs on graphs 📝</h3>
 				<p className='text-abyss'>
 					It all started a rainy, stormy day in 2006 and Gothenburg was drenched in a watery mess. It was decided that
 					to better support us for a similar situation in the future we need to control and measure the water levels, so
 					to be aware if new floods are about to hit the city again.
+				</p>
+				<p className='text-abyss pt-2'>
+					Gothenburg city now have over 15 years of water level data, free for us to use and present in whatever way we
+					want. Here we are using chart.js to present the data in a bar graph. Try filtering below to see what location
+					you want to know more about, and between what dates you want to track.
 				</p>
 				<ChartDataForm
 					locations={locations}

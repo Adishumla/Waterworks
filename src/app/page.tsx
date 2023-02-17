@@ -32,7 +32,7 @@ export default function Home() {
 					>
 						View more
 					</Link>
-					<div className='w-full h-56 bg-salt rounded-2xl drop-shadow-md p-2'>
+					<div className='w-full h-auto bg-salt rounded-2xl drop-shadow-md p-2 '>
 						<ExampleChartTwo locations='Tingstad' />
 					</div>
 				</section>
