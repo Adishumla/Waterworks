@@ -1,5 +1,7 @@
+import ChartDisplay from '@/components/ChartDisplay';
 import Hero from '@/components/Home/Hero';
 import Link from 'next/link';
+import ExampleChartOne from '@/components/Home/ExampleChartOne';
 import { Bar } from 'react-chartjs-2';
 export default function Home() {
 	return (
@@ -16,7 +18,9 @@ export default function Home() {
 
 				<section className='flex flex-col gap-5 mt-14'>
 					<h2 className='text-4xl font-bold text-abyss -mt-1'>How it works</h2>
-					<div className='w-full h-full bg-salt rounded-3xl drop-shadow-mg'>{/* <ExampleGraphOne /> */}</div>
+					<div className='w-full h-full bg-salt rounded-3xl drop-shadow-mg'>
+						<ExampleChartOne locations='Agnesberg' />
+					</div>
 					<p className='text-abyss'>
 						Lorem ipsum dolor sit amet consectetur. Aenean velit accumsan pharetra nunc elit quis eu duis vulputate.
 						Odio vel massa risus sed
