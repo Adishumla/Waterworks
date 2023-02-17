@@ -55,11 +55,6 @@ export default function ChartDisplay({
 		city.push('');
 	}
 
-	/* let time = importData.map((item) => {
-		const date = new Date(parseInt(item.slice(6, -2)));
-		return date.toLocaleDateString();
-	}); */
-
 	let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
 		return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -78,6 +73,21 @@ export default function ChartDisplay({
 		importLat = median;
 		time = months;
 		city = city.filter((item, index) => index % 30 === 0);
+	}
+
+	if (importLat.length > 3650) {
+		let median = [];
+		let months = [];
+		for (let i = 0; i < importLat.length; i += 3) {
+			let temp = importLat.slice(i, i + 2);
+			temp.sort((a, b) => a - b);
+			median.push(temp[Math.floor(temp.length / 2)]);
+			months.push(time[i]);
+		}
+
+		importLat = median;
+		time = months;
+		city = city.filter((item, index) => index % 3 === 0);
 	}
 
 	const data = {
