@@ -49,43 +49,21 @@ export default function ChartDisplay({ chartState, setChartState }: { chartState
 		return date.toLocaleDateString();
 	});
 
-	/* if (importLat.length > 365) {
-		let median = [];
-		for (let i = 0; i < importLat.length; i += 30) {
-			let temp = importLat.slice(i, i + 30);
-			temp.sort((a, b) => a - b);
-			median.push(temp[Math.floor(temp.length / 2)]);
-		}
-		importLat = median;
-		time = time.filter((item, index) => index % 30 === 0);
-		city = city.filter((item, index) => index % 30 === 0);
-	} */
-	//get every month by grouping importLat and time by month from time array and importLat array and then get the median of each month and splice off days from time array
 	if (importLat.length > 365) {
 		let median = [];
-		let month = [];
-		let monthTime = [];
-		let monthCity = [];
-		for (let i = 0; i < importLat.length; i++) {
-			const date = new Date(parseInt(importData[i].slice(6, -2)));
-			month.push(date.getMonth());
-		}
-		for (let i = 0; i < importLat.length; i++) {
-			const date = new Date(parseInt(importData[i].slice(6, -2)));
-			monthTime.push(date.toLocaleDateString());
-		}
-		for (let i = 0; i < importLat.length; i++) {
-			const date = new Date(parseInt(importData[i].slice(6, -2)));
-			monthCity.push('');
-		}
+		let months = [];
 		for (let i = 0; i < importLat.length; i += 30) {
 			let temp = importLat.slice(i, i + 30);
 			temp.sort((a, b) => a - b);
 			median.push(temp[Math.floor(temp.length / 2)]);
+			months.push(time[i]);
 		}
+		months = months.map((item) => {
+			return item.slice(3, 10);
+		});
 		importLat = median;
-		time = monthTime.filter((item, index) => index % 30 === 0);
-		city = monthCity.filter((item, index) => index % 30 === 0);
+		time = months;
+		city = city.filter((item, index) => index % 30 === 0);
 	}
 
 	const data = {
