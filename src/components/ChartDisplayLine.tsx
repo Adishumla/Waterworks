@@ -11,7 +11,6 @@ Chart.register(...registerables);
 async function displayData(location: string, fromDate: string, toDate: string) {
 	const url = `https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/${location}/Level/${fromDate}/${toDate}?format=Json`;
 	// console.log(url);
-
 	const response = await fetch(url);
 	const chartData = await response.json();
 	const value = [];
@@ -39,7 +38,6 @@ export default function ChartDisplay({
 	setChartLoaderState: any;
 	chartType?: string;
 }) {
-
 	const [importData, setImportData] = useState<string[]>([]);
 	let [importLat, setImportLat] = useState<string[]>([]);
 	useEffect(() => {
@@ -57,14 +55,14 @@ export default function ChartDisplay({
 		city.push('');
 	}
 
+	/* let time = importData.map((item) => {
+		const date = new Date(parseInt(item.slice(6, -2)));
+		return date.toLocaleDateString();
+	}); */
 
 	let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
-		if (importData.length > 60) {
-			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short' });
-		} else {
-			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
-		}
+		return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
 	});
 
 	if (importLat.length > 365) {
@@ -81,22 +79,6 @@ export default function ChartDisplay({
 		time = months;
 		city = city.filter((item, index) => index % 30 === 0);
 	}
-
-	if (importLat.length > 3650) {
-		let median = [];
-		let months = [];
-		for (let i = 0; i < importLat.length; i += 3) {
-			let temp = importLat.slice(i, i + 2);
-			temp.sort((a, b) => a - b);
-			median.push(temp[Math.floor(temp.length / 2)]);
-			months.push(time[i]);
-		}
-
-		importLat = median;
-		time = months;
-		city = city.filter((item, index) => index % 3 === 0);
-	}
-
 
 	const data = {
 		labels: time,
@@ -137,8 +119,7 @@ export default function ChartDisplay({
 
 	return (
 		<div>
-
-			<Bar data={data} options={options} />
+			<Line data={data} options={options} />
 		</div>
 	);
 }
