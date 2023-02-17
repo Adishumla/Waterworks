@@ -2,8 +2,10 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <main className="px-6 my-36">
-				{/* <Image src='/water dam.jpg' style={{width: "100%", height: "100%"}} alt='hero image' className='aspect-auto' /> */}
+    <main className="mx-6 my-36 relative">
+				<div className="relative aspect-h-9 aspect-w-16 mb-10">
+					<Image src='/water dam.jpg' fill alt='hero image' className="w-full h-full object-center object-cover rounded-xl" />
+				</div>
 				<h1 className="text-abyss text-2xl font-bold mb-6">About us</h1>
 				<p className="text-abyss mb-14">Lorem ipsum dolor sit amet consectetur. Libero ultricies tortor sit laoreet amet. Quam justo curabitur ultrices morbi nisi nam in. Malesuada felis nulla sed integer pretium laoreet porttitor. Neque leo libero tempor facilisis lectus. Ornare vestibulum vel consectetur quam. Ipsum sed dignissim nulla tempor gravida. Arcu vel maecenas tellus porta. Massa ut adipiscing gravida ut cras quis id egestas.</p>
 
