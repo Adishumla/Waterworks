@@ -57,7 +57,11 @@ export default function ChartDisplay({
 
 	let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
-		return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
+		if (importData.length > 60) {
+			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short' });
+		} else {
+			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
+		}
 	});
 
 	if (importLat.length > 365) {
