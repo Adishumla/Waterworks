@@ -27,7 +27,17 @@ async function displayData(location: string, fromDate: string, toDate: string) {
 	}
 	return { value, codes };
 }
-export default function ChartDisplay({ chartState, setChartState, setChartLoaderState }: { chartState: any; setChartState: any; setChartLoaderState: any }) {
+export default function ChartDisplay({
+	chartState,
+	setChartState,
+	setChartLoaderState,
+	chartType
+}: {
+	chartState: any;
+	setChartState: any;
+	setChartLoaderState: any;
+	chartType?: string;
+}) {
 	const [importData, setImportData] = useState<string[]>([]);
 	let [importLat, setImportLat] = useState<string[]>([]);
 	useEffect(() => {
@@ -45,30 +55,36 @@ export default function ChartDisplay({ chartState, setChartState, setChartLoader
 		city.push('');
 	}
 
-	let time = importData.map((item) => {
+	/* let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
 		return date.toLocaleDateString();
+	}); */
+
+	let time = importData.map((item) => {
+		const date = new Date(parseInt(item.slice(6, -2)));
+		return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short' });
 	});
 
 	if (importLat.length > 365) {
 		let median = [];
 		let months = [];
-		for (let i = 0; i < importLat.length; i += 30) {
+		for (let i = 0; i < importLat.length; i += 31) {
 			let temp = importLat.slice(i, i + 30);
 			temp.sort((a, b) => a - b);
 			median.push(temp[Math.floor(temp.length / 2)]);
 			months.push(time[i]);
 		}
-		months = months.map((item) => {
-			return item.slice(3, 10);
-		});
+		/* months = months.map((item) => {
+			const date = new Date(item);
+			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'long' });
+		}); */
 		importLat = median;
 		time = months;
 		city = city.filter((item, index) => index % 30 === 0);
 	}
 
 	const data = {
-		type: chartState.type,
+		type: chartType ?? 'bar',
 		labels: time,
 		datasets: [
 			{
