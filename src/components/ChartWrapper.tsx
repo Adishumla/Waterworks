@@ -15,7 +15,7 @@ export default function ChartWrapper({ locations }: { locations: any }) {
 
 	return (
 		<>
-			<ChartDisplay chartState={chartState} setChartState={setChartState} />
+			<ChartDisplay chartState={chartState} setChartState={setChartState} setChartLoaderState={setChartLoaderState} />
 			<ChartDataForm locations={locations} chartState={chartState} setChartState={setChartState} chartLoaderState={chartLoaderState} />
 		</>
 	);

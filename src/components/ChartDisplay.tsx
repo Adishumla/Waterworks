@@ -27,15 +27,16 @@ async function displayData(location: string, fromDate: string, toDate: string) {
 	}
 	return { value, codes };
 }
-export default function ChartDisplay({ chartState, setChartState }: { chartState: any; setChartState: any }) {
+export default function ChartDisplay({ chartState, setChartState, setChartLoaderState }: { chartState: any; setChartState: any; setChartLoaderState: any }) {
 	const [importData, setImportData] = useState<string[]>([]);
 	let [importLat, setImportLat] = useState<string[]>([]);
-	console.log('testar' + chartState.location);
 	useEffect(() => {
 		async function fetchData() {
+			setChartLoaderState(true);
 			const codes = await displayData(chartState.location, chartState.fromDate, chartState.toDate);
 			setImportData(codes.codes);
 			setImportLat(codes.value);
+			setChartLoaderState(false);
 		}
 		fetchData();
 	}, [chartState]);
