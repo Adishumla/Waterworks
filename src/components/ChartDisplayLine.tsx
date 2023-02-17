@@ -70,7 +70,7 @@ export default function ChartDisplay({
 		let months = [];
 		for (let i = 0; i < importLat.length; i += 31) {
 			let temp = importLat.slice(i, i + 30);
-			temp.sort((a, b) => a - b);
+			temp.sort((a: any, b: any) => a - b);
 			median.push(temp[Math.floor(temp.length / 2)]);
 			months.push(time[i]);
 		}
