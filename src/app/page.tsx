@@ -2,12 +2,13 @@ import ChartDisplay from '@/components/ChartDisplay';
 import Hero from '@/components/Home/Hero';
 import Link from 'next/link';
 import ExampleChartOne from '@/components/Home/ExampleChartOne';
+import ExampleChartTwo from '@/components/Home/ExampleChartTwo';
 import { Bar } from 'react-chartjs-2';
 export default function Home() {
 	return (
 		<>
 			<Hero />
-			<main className='bg-gradient-to-b from-white to-atlantic min-h-screen px-6 pb-8'>
+			<main className='bg-gradient-to-b from-white to-atlantic min-h-screen px-16 pb-8 grid grid-cols-1 md:grid-cols-2 gap-16'>
 				<section className='flex flex-col gap-3 mt-14'>
 					<h2 className='text-4xl font-bold text-abyss'>About us</h2>
 					<p className='text-abyss'>
@@ -18,7 +19,7 @@ export default function Home() {
 
 				<section className='flex flex-col gap-5 mt-14'>
 					<h2 className='text-4xl font-bold text-abyss -mt-1'>How it works</h2>
-					<div className='w-full h-full bg-salt rounded-3xl drop-shadow-mg'>
+					<div className='w-full h-auto bg-salt rounded-2xl drop-shadow-md p-2 '>
 						<ExampleChartOne locations='Agnesberg' />
 					</div>
 					<p className='text-abyss'>
@@ -31,7 +32,9 @@ export default function Home() {
 					>
 						View more
 					</Link>
-					<div className='w-full h-56 bg-salt rounded-3xl drop-shadow-mg'>{/* <ExampleGraphTwo /> */}</div>
+					<div className='w-full h-56 bg-salt rounded-2xl drop-shadow-md p-2'>
+						<ExampleChartTwo locations='Tingstad' />
+					</div>
 				</section>
 			</main>
 		</>
