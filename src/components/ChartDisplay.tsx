@@ -11,6 +11,7 @@ Chart.register(...registerables);
 async function displayData(location: string, fromDate: string, toDate: string) {
 	const url = `https://data.goteborg.se/RiverService/v1.1/Measurements/4a9a0d23-8e98-4e64-81ac-3e01fed82bee/${location}/Level/${fromDate}/${toDate}?format=Json`;
 	// console.log(url);
+
 	const response = await fetch(url);
 	const chartData = await response.json();
 	const value = [];
@@ -38,6 +39,7 @@ export default function ChartDisplay({
 	setChartLoaderState: any;
 	chartType?: string;
 }) {
+
 	const [importData, setImportData] = useState<string[]>([]);
 	let [importLat, setImportLat] = useState<string[]>([]);
 	useEffect(() => {
@@ -54,6 +56,7 @@ export default function ChartDisplay({
 	for (let i = 0; i < importData.length; i++) {
 		city.push('');
 	}
+
 
 	let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
@@ -94,6 +97,7 @@ export default function ChartDisplay({
 		city = city.filter((item, index) => index % 3 === 0);
 	}
 
+
 	const data = {
 		labels: time,
 		datasets: [
@@ -133,6 +137,7 @@ export default function ChartDisplay({
 
 	return (
 		<div>
+
 			<Bar data={data} options={options} />
 		</div>
 	);
