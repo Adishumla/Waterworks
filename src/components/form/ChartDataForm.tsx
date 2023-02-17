@@ -4,11 +4,13 @@ import { useState } from 'react';
 export default function ChartDataForm({
 	locations,
 	chartState,
-	setChartState
+	setChartState,
+	chartLoaderState,
 }: {
 	locations: any;
 	chartState: any;
 	setChartState: any;
+	chartLoaderState: any;
 }) {
 	const [locationData, setLocationData] = useState(locations[0]);
 	const [fromDate, setFromDate] = useState('2023-01-01');
@@ -36,14 +38,13 @@ export default function ChartDataForm({
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		setChartState({
-			location: locationData,
-			fromDate: fromDate,
-			toDate: toDate
-		});
-		// console.log(locationData);
-		// console.log(fromDate);
-		// console.log(toDate);
+		if(!chartLoaderState){
+			setChartState({
+				location: locationData,
+				fromDate: fromDate,
+				toDate: toDate
+			});
+		}
 	};
 
 	return (
@@ -62,7 +63,7 @@ export default function ChartDataForm({
 				</div>
 			</div>
 			<div className='w-full grid grid-cols-2 justify-items-end gap-4'>
-				<input type='submit' value='filter' className='col-start-2 h-10 w-4/5  rounded-md bg-baltic hover:cursor-pointer'/>
+				<input type='submit' value={chartLoaderState? "loading...": "filter"} className='col-start-2 h-10 w-4/5  rounded-md bg-baltic hover:cursor-pointer'/>
 			</div>
 		</form>
 	);

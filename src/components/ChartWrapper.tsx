@@ -10,10 +10,13 @@ export default function ChartWrapper({ locations }: { locations: any }) {
 		fromDate: '2023-01-01',
 		toDate: '2023-01-31'
 	});
+
+	const [chartLoaderState,setChartLoaderState] = useState(false);
+
 	return (
 		<>
 			<ChartDisplay chartState={chartState} setChartState={setChartState} />
-			<ChartDataForm locations={locations} chartState={chartState} setChartState={setChartState} />
+			<ChartDataForm locations={locations} chartState={chartState} setChartState={setChartState} chartLoaderState={chartLoaderState} />
 		</>
 	);
 }
