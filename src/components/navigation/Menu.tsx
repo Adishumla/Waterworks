@@ -8,7 +8,7 @@ export default function Menu({ menuIsVisible, onClick }: { menuIsVisible: boolea
 					menuIsVisible ? 'w-screen -translate-x-0' : ' translate-x-full'
 				}`}
 		>
-			<p className=' text-salt text-4xl'>WATERWORKS</p>
+			<Link href='/' className=' text-salt text-4xl'>WATERWORKS</Link>
 			<ul className='pt-24'>
 				<li className='text-4xl pt-12 text-salt'>
 					<Link onClick={onClick} href='/'>
