@@ -14,8 +14,8 @@ export default function ChartWrapper({ locations }: { locations: any }) {
 	const [chartLoaderState, setChartLoaderState] = useState(false);
 
 	return (
-		<section className='w-full h-fit grid grid-cols-1 lg:grid-cols-[55%_45%] drop-shadow-md'>
-			<section className=' bg-salt w-full h-auto rounded-2xl px-4'>
+		<section className='w-full h-fit grid grid-cols-1 lg:grid-cols-[55%_45%] text-black '>
+			<section className=' bg-salt w-full h-auto rounded-2xl drop-shadow-sm border border-3 px-4 hover:drop-shadow-md duration-300'>
 				<ChartDisplay chartState={chartState} setChartState={setChartState} setChartLoaderState={setChartLoaderState} />
 			</section>
 			<div className='px-6 py-4 lg:pt-0'>

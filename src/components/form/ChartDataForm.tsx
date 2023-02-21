@@ -82,7 +82,7 @@ export default function ChartDataForm({
 				<input
 					type='submit'
 					value={chartLoaderState ? 'loading...' : 'filter'}
-					className='col-start-2 h-8 w-4/5  rounded-md bg-baltic hover:cursor-pointer'
+					className='col-start-2 h-8 w-4/5  rounded-md bg-baltic hover:cursor-pointer text-salt'
 				/>
 			</div>
 		</form>
