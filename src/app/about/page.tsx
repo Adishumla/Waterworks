@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <main className="bg-gradient-to-b from-white to-atlantic min-h-screen">
+    <main className="bg-gradient-to-b from-white to-atlantic min-h-screen overflow-hidden">
 				<div className="mx-6 my-36 grid grid-cols-1 gap-12 relative md:grid-cols-2 md:w-1/2 md:mx-auto">
 					<div className="relative aspect-h-9 aspect-w-16">
 						<Image src='/water dam.jpg' fill alt='hero image' className="w-full h-full object-center object-cover rounded-xl" />
