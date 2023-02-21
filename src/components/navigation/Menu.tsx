@@ -8,7 +8,7 @@ export default function Menu({ menuIsVisible, onClick }: { menuIsVisible: boolea
 					menuIsVisible ? 'w-screen -translate-x-0' : ' translate-x-full'
 				}`}
 		>
-			<p className=' text-salt text-4xl'>WATERWORKS</p>
+			<Link href='/' className=' text-salt text-4xl'>WATERWORKS</Link>
 			<ul className='pt-24'>
 				<li className='text-4xl pt-12 text-salt'>
 					<Link onClick={onClick} href='/'>
@@ -21,7 +21,7 @@ export default function Menu({ menuIsVisible, onClick }: { menuIsVisible: boolea
 					</Link>
 				</li>
 				<li className='text-4xl pt-12 text-salt'>
-					<Link onClick={onClick} href='/info'>
+					<Link target={'_blank'} onClick={onClick} href='https://goteborg.se/wps/portal/start/kommun-o-politik/kommunfakta/digitalisering/oppna-data/oppna-data-soksida/oppna-data-datamangd#esc_entry=479&esc_context=6'>
 						HOW IT WORKS
 					</Link>
 				</li>
