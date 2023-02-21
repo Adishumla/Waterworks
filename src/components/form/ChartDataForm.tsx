@@ -5,7 +5,7 @@ export default function ChartDataForm({
 	locations,
 	chartState,
 	setChartState,
-	chartLoaderState,
+	chartLoaderState
 }: {
 	locations: any;
 	chartState: any;
@@ -38,7 +38,7 @@ export default function ChartDataForm({
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		if(!chartLoaderState){
+		if (!chartLoaderState) {
 			setChartState({
 				location: locationData,
 				fromDate: fromDate,
@@ -48,22 +48,42 @@ export default function ChartDataForm({
 	};
 
 	return (
-		<form onSubmit={submit} className="w-full h-fit flex flex-col p-4 gap-4">
-			<div className='w-full h-fit flex flex-col gap-4'>
-				<label htmlFor="location" className=''>Location</label>
-				<select name='' id='location' onChange={changeLocation} className='rounded-md border-abyss border px-8 h-10'>
+		<form onSubmit={submit} className='w-full h-fit flex flex-col pt-4 gap-4'>
+			<div className='w-full h-fit flex flex-col'>
+				<label htmlFor='location' className=''>
+					Location
+				</label>
+				<select name='' id='location' onChange={changeLocation} className='rounded-md border-abyss border h-8'>
 					{options}
 				</select>
 			</div>
-			<div className='w-full h-fit flex flex-col gap-2'>
+			<div className='w-full h-fit flex flex-col'>
 				<p className=''>Dates</p>
-				<div className='w-full flex flex-row justify-between gap-4'>
-					<input type='date' name='from' id='' value={fromDate} onChange={changeFromDate} className="h-10 w-full rounded-md border-abyss border text-center" />
-					<input type='date' name='to' id='' value={toDate} onChange={changeToDate} className="h-10 w-full rounded-md border-abyss border text-center" />
+				<div className='w-full flex flex-row justify-between gap-2'>
+					<input
+						type='date'
+						name='from'
+						id=''
+						value={fromDate}
+						onChange={changeFromDate}
+						className='h-8 w-full rounded-md border-abyss border text-center'
+					/>
+					<input
+						type='date'
+						name='to'
+						id=''
+						value={toDate}
+						onChange={changeToDate}
+						className='h-8 w-full rounded-md border-abyss border text-center'
+					/>
 				</div>
 			</div>
 			<div className='w-full grid grid-cols-2 justify-items-end gap-4'>
-				<input type='submit' value={chartLoaderState? "loading...": "filter"} className='col-start-2 h-10 w-4/5  rounded-md bg-baltic hover:cursor-pointer'/>
+				<input
+					type='submit'
+					value={chartLoaderState ? 'loading...' : 'filter'}
+					className='col-start-2 h-8 w-4/5  rounded-md bg-baltic hover:cursor-pointer text-salt'
+				/>
 			</div>
 		</form>
 	);

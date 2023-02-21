@@ -15,12 +15,10 @@ async function displayData(location: string, fromDate: string, toDate: string) {
 	const response = await fetch(url);
 	const chartData = await response.json();
 	const value = [];
-	// console.log(chartData[0]);
 
 	for (const data of chartData) {
 		value.push(data.Value);
 	}
-	// console.log(value);
 
 	const codes = [];
 	for (const data of chartData) {
@@ -60,6 +58,9 @@ export default function ChartDisplay({
 		const date = new Date(parseInt(item.slice(6, -2)));
 		if (importData.length > 60) {
 			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short' });
+		}
+		if (window.innerWidth < 500) {
+			return date.toLocaleDateString('sv-SE', { month: 'short', day: 'numeric' });
 		} else {
 			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
 		}
@@ -119,7 +120,7 @@ export default function ChartDisplay({
 				],
 				borderWidth: 1,
 
-				borderRadius: 5
+				borderRadius: 3
 			}
 		]
 	};
@@ -129,7 +130,8 @@ export default function ChartDisplay({
 			y: {
 				beginAtZero: true
 			}
-		}
+		},
+		aspectRatio: 1.2
 	};
 
 	return (

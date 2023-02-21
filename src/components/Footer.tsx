@@ -12,7 +12,7 @@ export default function Footer() {
 					<Link href='/about'>About us</Link>
 				</li>
 				<li className='text-lg'>
-					<Link href='/info'>How it works</Link>
+					<Link target={'_blank'} href='https://goteborg.se/wps/portal/start/kommun-o-politik/kommunfakta/digitalisering/oppna-data/oppna-data-soksida/oppna-data-datamangd#esc_entry=479&esc_context=6'>How it works</Link>
 				</li>
 			</ul>
 			<ul className='flex flex-row justify-center gap-6'>
