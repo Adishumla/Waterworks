@@ -11,10 +11,13 @@ export default function Home() {
 			<main className='bg-gradient-to-b from-white to-atlantic min-h-screen px-16 pb-8 grid grid-cols-1 md:grid-cols-2 gap-16'>
 				<section className='flex flex-col gap-3 mt-14'>
 					<h2 className='text-4xl font-bold text-abyss'>About us</h2>
+
+
 					<p className='text-abyss'>
-						Lorem ipsum dolor sit amet consectetur. Aenean velit accumsan pharetra nunc elit quis eu duis vulputate.
-						Odio vel massa risus sed. Viverra tincidunt pretium amet in at eget. Ut interdum pharetra proin
+					Water is one of the most essential resources on our planet, and understanding water statistics is crucial for ensuring its sustainable use and management. From freshwater availability to water quality, a wide range of factors contribute to our understanding of this vital resource.
 					</p>
+
+					<p className='text-abyss'>Understanding water statistics can help inform policy decisions and shape strategies for sustainable water management. Efforts to improve access to safe drinking water, reduce water pollution, and increase the efficiency of water use are critical for addressing global water challenges. By staying informed and taking action, we can work towards ensuring that water remains a precious resource for generations to come.</p>
 				</section>
 
 				<section className='flex flex-col gap-5 mt-14'>
