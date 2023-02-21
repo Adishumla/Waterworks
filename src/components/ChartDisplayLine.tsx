@@ -62,7 +62,14 @@ export default function ChartDisplay({
 
 	let time = importData.map((item) => {
 		const date = new Date(parseInt(item.slice(6, -2)));
-		return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
+		if (importData.length > 60) {
+			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short' });
+		}
+		if (window.innerWidth < 500) {
+			return date.toLocaleDateString('sv-SE', { month: 'short', day: 'numeric' });
+		} else {
+			return date.toLocaleDateString('sv-SE', { year: 'numeric', month: 'short', day: 'numeric' });
+		}
 	});
 
 	if (importLat.length > 365) {
@@ -104,7 +111,7 @@ export default function ChartDisplay({
 				],
 				borderWidth: 1,
 
-				borderRadius: 5
+				tension: 0
 			}
 		]
 	};
@@ -114,7 +121,8 @@ export default function ChartDisplay({
 			y: {
 				beginAtZero: true
 			}
-		}
+		},
+		aspectRatio: 1.3
 	};
 
 	return (
