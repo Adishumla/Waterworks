@@ -8,7 +8,7 @@ export default function Home() {
 	return (
 		<>
 			<Hero />
-			<main className='bg-gradient-to-b white min-h-screen px-16 pb-8 grid grid-cols-1 md:grid-cols-2 gap-16'>
+			<main className='bg-gradient-to-b white min-h-screen px-6 lg:px-16  pb-8 grid grid-cols-1 md:grid-cols-2 gap-16'>
 				<section className='flex flex-col gap-3 mt-14'>
 					<h2 className='text-4xl font-bold text-abyss'>About us</h2>
 
