@@ -36,7 +36,7 @@ export default function Home() {
 						Odio vel massa risus sed
 					</p>
 					<Link
-						className='bg-baltic text-salt outline outline-[3px] outline-baltic font-bold px-8 py-3 w-fit rounded-md self-center md:self-start hover:bg-baltic/[.85] hover:outline-baltic/[.85] active:bg-baltic/[0]'
+						className='bg-baltic text-salt font-bold px-8 py-3 w-fit rounded-md self-center md:self-start hover:bg-baltic/[.85] hover:outline-baltic/[.85] active:bg-baltic/[0]'
 						href='/data'
 					>
 						View more

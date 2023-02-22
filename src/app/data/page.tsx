@@ -11,7 +11,7 @@ export default async function Data() {
 	});
 
 	return (
-		<main className='bg-gradient-to-b bg-slate-100 px-6 md:px-16 flex justify-center items-center min-h-screen'>
+		<main className='bg-gradient-to-b bg-slate-100 px-6 md:px-16 flex justify-center items-center min-h-screen '>
 			{/* send apikey to chartdisplay */}
 			<section className='bg-salt w-full h-fit rounded-2xl p-4 shadow-2xl my-12'>
 				<ChartWrapper locations={locations} />
